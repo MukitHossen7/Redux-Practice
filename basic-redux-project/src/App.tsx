@@ -14,10 +14,16 @@ function App() {
   return (
     <div className="flex gap-10 items-center mx-auto w-96 py-20">
       <button
-        onClick={() => handleIncrement(5)}
+        onClick={() => handleIncrement(1)}
         className="px-4 py-2 border-2 border-green-500 rounded-xl"
       >
         Increment
+      </button>
+      <button
+        onClick={() => handleIncrement(5)}
+        className="px-10 py-2 border-2 border-green-500 rounded-xl"
+      >
+        Increment By 5
       </button>
       <div className="text-2xl text-red-500 font-bold">{count}</div>
       <button
