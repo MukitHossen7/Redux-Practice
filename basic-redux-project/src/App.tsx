@@ -5,8 +5,8 @@ function App() {
   const dispatch = useAppDispatch();
   const { count } = useAppSelector((state) => state.counter);
 
-  const handleIncrement = () => {
-    dispatch(increment());
+  const handleIncrement = (num: number) => {
+    dispatch(increment(num));
   };
   const handleDecrement = () => {
     dispatch(decrement());
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="flex gap-10 items-center mx-auto w-96 py-20">
       <button
-        onClick={handleIncrement}
+        onClick={() => handleIncrement(5)}
         className="px-4 py-2 border-2 border-green-500 rounded-xl"
       >
         Increment
