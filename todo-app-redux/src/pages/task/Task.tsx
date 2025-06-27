@@ -8,7 +8,11 @@ const Task = () => {
   return (
     <div className="py-10">
       <h1 className="text-center mb-4 text-xl">This is Task Page</h1>
-      <TaskCard></TaskCard>
+      <div>
+        {tasks.map((task, idx) => {
+          return <TaskCard task={task} key={idx}></TaskCard>;
+        })}
+      </div>
     </div>
   );
 };

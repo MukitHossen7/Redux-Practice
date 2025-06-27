@@ -15,6 +15,14 @@ const initialState: IInitialState = {
       isCompleted: false,
       priority: "High",
     },
+    {
+      id: "123365",
+      title: "Initialize Backend",
+      description: "Create Backend Repo",
+      dueDate: "06/27/2025",
+      isCompleted: false,
+      priority: "Low",
+    },
   ],
 };
 
