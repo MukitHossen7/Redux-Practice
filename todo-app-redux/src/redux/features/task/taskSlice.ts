@@ -23,6 +23,14 @@ const initialState: IInitialState = {
       isCompleted: false,
       priority: "Low",
     },
+    {
+      id: "123365",
+      title: "Initialize git hub",
+      description: "Create github  Repo",
+      dueDate: "06/27/2025",
+      isCompleted: false,
+      priority: "Medium",
+    },
   ],
 };
 
