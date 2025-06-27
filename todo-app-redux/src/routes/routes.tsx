@@ -1,6 +1,6 @@
 import MainLayouts from "@/layouts/MainLayouts";
-import Task from "@/pages/task/task";
-import User from "@/pages/user/user";
+import Task from "@/pages/task/Task";
+import User from "@/pages/user/User";
 
 import { createBrowserRouter } from "react-router";
 

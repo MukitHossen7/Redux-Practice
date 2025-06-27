@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/mode-toggle/mode-toggle";
 import { Link } from "react-router";
 
 const Navbar = () => {
@@ -7,6 +8,9 @@ const Navbar = () => {
       <div className="flex gap-5">
         <Link to="/tasks">Task</Link>
         <Link to="/users">User</Link>
+      </div>
+      <div>
+        <ModeToggle></ModeToggle>
       </div>
     </div>
   );
