@@ -1,7 +1,8 @@
+import { selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hook";
 
 const Task = () => {
-  const { tasks } = useAppSelector((state) => state.todo);
+  const tasks = useAppSelector(selectTasks);
   console.log(tasks);
   return (
     <div>
