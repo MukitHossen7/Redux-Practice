@@ -10,6 +10,11 @@ const router = createBrowserRouter([
     element: <MainLayouts></MainLayouts>,
     children: [
       {
+        index: true,
+        // path: "/tasks",
+        Component: Task,
+      },
+      {
         path: "/tasks",
         Component: Task,
       },
