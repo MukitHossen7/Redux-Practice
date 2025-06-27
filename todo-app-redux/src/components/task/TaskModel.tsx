@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
 import type { ITasks } from "@/interface/tasks.interface/tasks.interface";
+import { Textarea } from "../ui/textarea";
 
 export function TaskModel() {
   const form = useForm<ITasks>();
@@ -38,7 +39,11 @@ export function TaskModel() {
                   <FormItem>
                     <FormLabel>Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="title" {...field} />
+                      <Input
+                        placeholder="title"
+                        {...field}
+                        value={field.value || ""}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -50,7 +55,12 @@ export function TaskModel() {
                   <FormItem>
                     <FormLabel className="mt-2">Description</FormLabel>
                     <FormControl>
-                      <Input placeholder="description" {...field} />
+                      {/* <Input placeholder="description" {...field} /> */}
+                      <Textarea
+                        placeholder="description"
+                        {...field}
+                        value={field.value || ""}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -62,28 +72,15 @@ export function TaskModel() {
                   <FormItem>
                     <FormLabel className="mt-2">DueDate</FormLabel>
                     <FormControl>
-                      <Input placeholder="DueDate" {...field} />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              {/* <FormField
-                control={form.control}
-                name="isCompleted"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="mt-2">IsCompleted</FormLabel>
-                    <FormControl>
                       <Input
-                        placeholder="isCompleted"
-                        value={String(field.value)}
+                        placeholder="DueDate"
                         {...field}
+                        value={field.value || ""}
                       />
                     </FormControl>
                   </FormItem>
                 )}
-              /> */}
-
+              />
               <FormField
                 control={form.control}
                 name="priority"
@@ -91,7 +88,11 @@ export function TaskModel() {
                   <FormItem>
                     <FormLabel className="mt-2">Priority</FormLabel>
                     <FormControl>
-                      <Input placeholder="priority" {...field} />
+                      <Input
+                        placeholder="priority"
+                        {...field}
+                        value={field.value || ""}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
