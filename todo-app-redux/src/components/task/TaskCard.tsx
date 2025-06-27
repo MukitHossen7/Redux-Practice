@@ -8,7 +8,6 @@ interface IProps {
 }
 
 const TaskCard = ({ task }: IProps) => {
-  console.log(task);
   return (
     <div className="border px-5 py-5 rounded-md flex justify-between max-w-2xl mx-auto">
       <div className="">
