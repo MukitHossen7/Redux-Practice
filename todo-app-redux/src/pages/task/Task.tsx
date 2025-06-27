@@ -1,4 +1,8 @@
+import { useAppSelector } from "@/redux/hook";
+
 const Task = () => {
+  const { tasks } = useAppSelector((state) => state.todo);
+  console.log(tasks);
   return (
     <div>
       <h1>This is Task Page</h1>
