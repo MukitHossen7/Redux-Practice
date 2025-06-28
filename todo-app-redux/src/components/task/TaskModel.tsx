@@ -32,8 +32,17 @@ import { addTask } from "@/redux/features/task/taskSlice";
 export function TaskModel() {
   const form = useForm();
   const dispatch = useAppDispatch();
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    dispatch(addTask(data as ITasks));
+    const taskWithFormattedDate = {
+      ...data,
+      dueDate:
+        data.dueDate instanceof Date
+          ? data.dueDate.toISOString()
+          : data.dueDate,
+    };
+
+    dispatch(addTask(taskWithFormattedDate as ITasks));
   };
   return (
     <Dialog>
