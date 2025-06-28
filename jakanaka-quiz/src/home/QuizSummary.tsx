@@ -44,7 +44,10 @@ export function QuizSummary() {
 
         {/* Progress Bar */}
         <div className="mb-4">
-           <Progress.Root className="h-4 bg-gray-200 rounded-full overflow-hidden" value={correctPercentage}>
+          <Progress.Root
+            className="h-4 bg-gray-200 rounded-full overflow-hidden"
+            value={correctPercentage}
+          >
             <Progress.Indicator
               className={`h-full transition-all duration-300 ${color}`}
               style={{ width: `${correctPercentage}%` }}
