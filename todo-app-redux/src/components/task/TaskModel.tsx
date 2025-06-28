@@ -21,6 +21,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "../ui/calendar";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 export function TaskModel() {
   const form = useForm<ITasks>();
@@ -94,6 +99,50 @@ export function TaskModel() {
                         <SelectItem value="High">High</SelectItem>
                       </SelectContent>
                     </Select>
+                  </FormItem>
+                )}
+              />
+
+              {/* date */}
+              <FormField
+                control={form.control}
+                name="dueDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="mt-2">DueDate</FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-full pl-3 text-left font-normal",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>DueDate</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={
+                            field.value ? new Date(field.value) : undefined
+                          }
+                          onSelect={field.onChange}
+                          // disabled={(date) =>
+                          //   date > new Date() || date < new Date("1900-01-01")
+                          // }
+                          captionLayout="dropdown"
+                        />
+                      </PopoverContent>
+                    </Popover>
                   </FormItem>
                 )}
               />
