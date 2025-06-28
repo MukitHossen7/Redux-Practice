@@ -14,6 +14,13 @@ import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
 import type { ITasks } from "@/interface/tasks.interface/tasks.interface";
 import { Textarea } from "../ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 export function TaskModel() {
   const form = useForm<ITasks>();
@@ -65,6 +72,31 @@ export function TaskModel() {
                 )}
               />
 
+              {/* dropdown */}
+              <FormField
+                control={form.control}
+                name="priority"
+                render={({ field }) => (
+                  <FormItem className="">
+                    <FormLabel className="mt-2">Priority</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select a priority" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Low">Low</SelectItem>
+                        <SelectItem value="Medium">Medium</SelectItem>
+                        <SelectItem value="High">High</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
               <DialogFooter className="mt-5">
                 <DialogClose asChild>
                   <Button variant="outline">Cancel</Button>
