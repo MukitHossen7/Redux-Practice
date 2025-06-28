@@ -55,7 +55,6 @@ export function TaskModel() {
                   <FormItem>
                     <FormLabel className="mt-2">Description</FormLabel>
                     <FormControl>
-                      {/* <Input placeholder="description" {...field} /> */}
                       <Textarea
                         placeholder="description"
                         {...field}
@@ -65,38 +64,7 @@ export function TaskModel() {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="dueDate"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="mt-2">DueDate</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="DueDate"
-                        {...field}
-                        value={field.value || ""}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="priority"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="mt-2">Priority</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="priority"
-                        {...field}
-                        value={field.value || ""}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+
               <DialogFooter className="mt-5">
                 <DialogClose asChild>
                   <Button variant="outline">Cancel</Button>
