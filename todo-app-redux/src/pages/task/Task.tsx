@@ -42,7 +42,7 @@ const Task = () => {
         <TaskModel></TaskModel>
       </div>
       <div>
-        {tasks.map((task: ITasks, idx: number) => {
+        {tasks?.map((task: ITasks, idx: number) => {
           return <TaskCard task={task} key={idx}></TaskCard>;
         })}
       </div>

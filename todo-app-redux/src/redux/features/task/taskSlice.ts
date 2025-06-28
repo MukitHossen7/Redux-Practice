@@ -4,13 +4,15 @@ import { createSlice, nanoid, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface IInitialState {
   tasks: ITasks[];
-  filter: "All";
+  filter: PriorityType;
 }
 const initialState: IInitialState = {
   tasks: [],
   filter: "All",
 };
+
 type DraftTask = Pick<ITasks, "title" | "description" | "dueDate" | "priority">;
+export type PriorityType = "All" | "Low" | "Medium" | "High";
 
 const createTask = (taskData: DraftTask): ITasks => {
   return {
@@ -45,13 +47,18 @@ const taskSlice = createSlice({
     deleteTask: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
-    filterTask: (state, action) => {
+    filterTask: (state, action: PayloadAction<PriorityType>) => {
       state.filter = action.payload;
     },
   },
 });
 
 export const selectTasks = (state: RootState) => {
+  const filter = state.todo.filter;
+
+  if (filter === "Low" || filter === "Medium" || filter === "High") {
+    return state.todo.tasks.filter((task) => task.priority === filter);
+  }
   return state.todo.tasks;
 };
 
