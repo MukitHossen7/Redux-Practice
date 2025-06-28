@@ -1,5 +1,6 @@
 import TaskCard from "@/components/task/TaskCard";
 import { TaskModel } from "@/components/task/TaskModel";
+import type { ITasks } from "@/interface/tasks.interface/tasks.interface";
 import { selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hook";
 
@@ -12,7 +13,7 @@ const Task = () => {
         <TaskModel></TaskModel>
       </div>
       <div>
-        {tasks.map((task, idx) => {
+        {tasks.map((task: ITasks, idx: number) => {
           return <TaskCard task={task} key={idx}></TaskCard>;
         })}
       </div>

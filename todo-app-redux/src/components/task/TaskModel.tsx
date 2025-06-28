@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Input } from "../ui/input";
 import type { ITasks } from "@/interface/tasks.interface/tasks.interface";
 import { Textarea } from "../ui/textarea";
@@ -30,10 +30,10 @@ import { useAppDispatch } from "@/redux/hook";
 import { addTask } from "@/redux/features/task/taskSlice";
 
 export function TaskModel() {
-  const form = useForm<ITasks>();
+  const form = useForm();
   const dispatch = useAppDispatch();
-  const onSubmit = (data: ITasks): void => {
-    dispatch(addTask(data));
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    dispatch(addTask(data as ITasks));
   };
   return (
     <Dialog>
