@@ -28,8 +28,10 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { useAppDispatch } from "@/redux/hook";
 import { addTask } from "@/redux/features/task/taskSlice";
+import { useState } from "react";
 
 export function TaskModel() {
+  const [open, setOpen] = useState(false);
   const form = useForm();
   const dispatch = useAppDispatch();
 
@@ -43,9 +45,11 @@ export function TaskModel() {
     };
 
     dispatch(addTask(taskWithFormattedDate as ITasks));
+    form.reset();
+    setOpen(false);
   };
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <form>
         <DialogTrigger asChild>
           <Button variant="outline">Add Task</Button>
