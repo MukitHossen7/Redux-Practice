@@ -2,8 +2,9 @@ import { MdDeleteForever } from "react-icons/md";
 import { Checkbox } from "@/components/ui/checkbox";
 import type { ITasks } from "@/interface/tasks.interface/tasks.interface";
 import { cn } from "@/lib/utils";
-import { useAppDispatch } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { deleteTask, toggleTask } from "@/redux/features/task/taskSlice";
+import { selectUsers } from "@/redux/features/user/userSlice";
 
 interface IProps {
   task: ITasks;
@@ -11,6 +12,8 @@ interface IProps {
 
 const TaskCard = ({ task }: IProps) => {
   const dispatch = useAppDispatch();
+  const users = useAppSelector(selectUsers);
+  const addTaskUser = users.find((user) => user.id === task.assignedTo);
   return (
     <div className="border px-5 py-5 rounded-md flex justify-between max-w-2xl mx-auto">
       <div className="">
@@ -26,6 +29,7 @@ const TaskCard = ({ task }: IProps) => {
             {task?.title}
           </h1>
         </div>
+        <p>AssignedTo : {addTaskUser ? addTaskUser.name : "No user"}</p>
         <p className="py-5">{task?.description}</p>
       </div>
       <div className="flex gap-3 items-center">

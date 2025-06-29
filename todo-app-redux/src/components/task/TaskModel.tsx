@@ -138,9 +138,7 @@ export function TaskModel() {
                       </FormControl>
                       <SelectContent>
                         {users.map((user) => (
-                          <SelectItem value={user?.name}>
-                            {user?.name}
-                          </SelectItem>
+                          <SelectItem value={user?.id}>{user?.name}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>

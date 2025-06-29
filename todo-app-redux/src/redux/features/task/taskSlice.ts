@@ -11,14 +11,17 @@ const initialState: IInitialState = {
   filter: "All",
 };
 
-type DraftTask = Pick<ITasks, "title" | "description" | "dueDate" | "priority">;
+type DraftTask = Pick<
+  ITasks,
+  "title" | "description" | "dueDate" | "priority" | "assignedTo"
+>;
 export type PriorityType = "All" | "Low" | "Medium" | "High";
 
 const createTask = (taskData: DraftTask): ITasks => {
   return {
+    ...taskData,
     id: nanoid(),
     isCompleted: false,
-    ...taskData,
   };
 };
 
