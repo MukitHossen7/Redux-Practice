@@ -26,14 +26,16 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { useAppDispatch } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addTask } from "@/redux/features/task/taskSlice";
 import { useState } from "react";
+import { selectUsers } from "@/redux/features/user/userSlice";
 
 export function TaskModel() {
   const [open, setOpen] = useState(false);
   const form = useForm();
   const dispatch = useAppDispatch();
+  const users = useAppSelector(selectUsers);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const taskWithFormattedDate = {
@@ -118,7 +120,33 @@ export function TaskModel() {
                   </FormItem>
                 )}
               />
-
+              {/* dropdown user*/}
+              <FormField
+                control={form.control}
+                name="assignedTo"
+                render={({ field }) => (
+                  <FormItem className="">
+                    <FormLabel className="mt-2">AssignedTo</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select a AssignedTo" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {users.map((user) => (
+                          <SelectItem value={user?.name}>
+                            {user?.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
               {/* date */}
               <FormField
                 control={form.control}
