@@ -13,16 +13,16 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { Input } from "../ui/input";
 import { useState } from "react";
+import { useAppDispatch } from "@/redux/hook";
+import { addUser } from "@/redux/features/user/userSlice";
 
 export function UserModel() {
   const [open, setOpen] = useState(false);
   const form = useForm();
-  //   const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
-
-    // dispatch(addTask(taskWithFormattedDate as ITasks));
+    dispatch(addUser(data));
     form.reset();
     setOpen(false);
   };

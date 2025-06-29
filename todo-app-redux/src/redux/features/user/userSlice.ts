@@ -8,12 +8,12 @@ export interface IUserInitialState {
 const initialState: IUserInitialState = {
   users: [
     {
-      id: "1223",
-      name: "Mukit",
+      id: "msQsaTk1yZUuWnPF_d0sg",
+      name: "Cr7",
     },
     {
-      id: "12233",
-      name: "Raju",
+      id: "_AhKWNoNbhmUZxzs7w1xY",
+      name: "Mim",
     },
   ],
 };
@@ -39,5 +39,5 @@ export const selectUsers = (state: RootState) => {
   return state.user.users;
 };
 
-export const { removeUser } = userSlice.actions;
+export const { addUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;
