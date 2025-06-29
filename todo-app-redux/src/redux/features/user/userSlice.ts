@@ -6,16 +6,7 @@ export interface IUserInitialState {
   users: IUser[];
 }
 const initialState: IUserInitialState = {
-  users: [
-    {
-      id: "msQsaTk1yZUuWnPF_d0sg",
-      name: "Cr7",
-    },
-    {
-      id: "_AhKWNoNbhmUZxzs7w1xY",
-      name: "Mim",
-    },
-  ],
+  users: [],
 };
 
 const userSlice = createSlice({
