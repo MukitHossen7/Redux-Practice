@@ -20,4 +20,4 @@ export const quizApi = createApi({
   }),
 });
 
-export const { useGetAllQuizQuery } = quizApi;
+export const { useGetAllQuizQuery, useAddQuizMutation } = quizApi;
