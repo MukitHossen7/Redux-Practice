@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAddQuizMutation } from "@/redux/api/quiz.api/quizApi";
 import { useState } from "react";
 
 type QuizData = {
@@ -23,6 +24,7 @@ type QuizData = {
 };
 
 export default function QuizModel() {
+  const [open, setOpen] = useState(false);
   const [step, setStep] = useState(1);
   const [addQuestionStep, setAddQuestionStep] = useState(1);
   const [quizData, setQuizData] = useState<QuizData>({
@@ -79,14 +81,16 @@ export default function QuizModel() {
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
-
+  const [addQuiz] = useAddQuizMutation();
   const handleSubmit = () => {
     console.log(quizData);
+    addQuiz(quizData);
+    setOpen(false);
   };
 
   return (
     <div className="my-6">
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button variant="destructive">Add Quiz</Button>
         </DialogTrigger>
