@@ -1,4 +1,5 @@
 import "./App.css";
+import AllQuiz from "./home/AllQuiz";
 import Question from "./home/Question";
 import QuizModel from "./home/QuizModel";
 import { QuizSummary } from "./home/QuizSummary";
@@ -13,6 +14,7 @@ function App() {
       <div className="text-center">
         <QuizModel></QuizModel>
       </div>
+      <AllQuiz></AllQuiz>
       {!quizComplete ? <Question /> : <QuizSummary />}
     </>
   );
