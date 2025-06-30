@@ -5,11 +5,19 @@ export const quizApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
   tagTypes: ["quiz"],
   endpoints: (builder) => ({
-    getQuiz: builder.query({
+    getAllQuiz: builder.query({
       query: () => "/quizzes",
       providesTags: ["quiz"],
+    }),
+    addQuiz: builder.mutation({
+      query: (quizData) => ({
+        url: "/quizzes",
+        method: "POST",
+        body: quizData,
+      }),
+      invalidatesTags: ["quiz"],
     }),
   }),
 });
 
-export const { useGetQuizQuery } = quizApi;
+export const { useGetAllQuizQuery } = quizApi;
