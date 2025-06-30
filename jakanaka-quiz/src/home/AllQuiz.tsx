@@ -1,7 +1,14 @@
 import { useGetAllQuizQuery } from "@/redux/api/quiz.api/quizApi";
 
 const AllQuiz = () => {
-  const { data } = useGetAllQuizQuery(undefined);
+  const { data, isLoading } = useGetAllQuizQuery(undefined);
+  if (isLoading) {
+    return (
+      <div className="text-center">
+        <h2 className="text-xl font-bold">Loading....</h2>
+      </div>
+    );
+  }
   console.log(data);
   return (
     <div className="py-10">
