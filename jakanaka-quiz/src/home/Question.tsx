@@ -3,11 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { setAnswer } from "@/redux/features/quizSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import QuizControls from "./QuizControls";
+import { useGetAllQuizQuery } from "@/redux/api/quiz.api/quizApi";
+
 export default function Question() {
   const dispatch = useAppDispatch();
   const { questions, currentQuestionIndex, userAnswer } = useAppSelector(
     (state) => state.quiz
   );
+
+  const { data } = useGetAllQuizQuery(undefined);
   const currentQuestion = questions[currentQuestionIndex];
   const currentAnswer = userAnswer[currentQuestionIndex];
 
@@ -19,7 +23,7 @@ export default function Question() {
       })
     );
   };
-
+  console.log(data);
   return (
     <div className="flex justify-center">
       <Card className="w-[450px] ">

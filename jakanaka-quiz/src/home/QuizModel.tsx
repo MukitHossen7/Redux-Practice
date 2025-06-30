@@ -83,7 +83,6 @@ export default function QuizModel() {
   const prevStep = () => setStep((prev) => prev - 1);
   const [addQuiz] = useAddQuizMutation();
   const handleSubmit = () => {
-    console.log(quizData);
     addQuiz(quizData);
     setOpen(false);
   };

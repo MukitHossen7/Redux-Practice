@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { quizSlice } from "./features/quizSlice";
+import { quizApi } from "./api/quiz.api/quizApi";
 
 export const store = configureStore({
   reducer: {
     quiz: quizSlice.reducer,
+    [quizApi.reducerPath]: quizApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(quizApi.middleware),
 });
 
 // Infer the `RootState`,  `AppDispatch`, and `AppStore` types from the store itself
