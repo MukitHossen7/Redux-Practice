@@ -1,3 +1,5 @@
+import searchImage from "../../assets/search.svg";
+
 const Search = () => {
   return (
     <>
@@ -12,7 +14,7 @@ const Search = () => {
         </form>
         <img
           className="inline h-4 cursor-pointer"
-          src="./assets/search.svg"
+          src={searchImage}
           alt="Search"
         />
       </div>
