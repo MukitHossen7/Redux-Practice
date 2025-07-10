@@ -1,6 +1,7 @@
 import RelatedVideoListItem from "./RelatedVideoListItem";
 
-const RelatedVideoList = () => {
+const RelatedVideoList = ({ tags }) => {
+  console.log(tags);
   return (
     <div>
       <div class="col-span-full lg:col-auto max-h-[570px] overflow-y-auto">
